@@ -87,7 +87,7 @@ Explore the Stack Overflow data set with the Elastic Stack using this gentle int
 The [`kibana_saved_objects_742.ndjson`](/kibana/kibana_saved_objects_742.ndjson) file can be
 imported into Kibana to apply some preconfigured saved queries, visualizations and a dashboard:
 
-![Kibana Dashboard](images/kibana_dashboard.png)
+![Kibana Dashboard](/images/kibana_dashboard.PNG?raw=true)
 
 1. Navigate to `Management` menu item within Kibana
 2. Under Kibana, select `Saved Objects`
