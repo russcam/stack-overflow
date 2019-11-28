@@ -4,9 +4,9 @@ Explore the Stack Overflow data set with the Elastic Stack using this gentle int
 
 ## Prerequisites
 
-1. Download at least [Elasticsearch 7.3.2](https://www.elastic.co/downloads/elasticsearch)
-2. Download at least [Kibana 7.3.2](https://www.elastic.co/downloads/kibana) _(version must match same version as Elasticsearch)_
-3. Install [.NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+1. Download at least [Elasticsearch 7.4.2](https://www.elastic.co/downloads/elasticsearch)
+2. Download at least [Kibana 7.4.2](https://www.elastic.co/downloads/kibana) _(version must match same version as Elasticsearch)_
+3. Install [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 4. Download latest [Stack Overflow data set](https://archive.org/details/stackexchange)
     - Under 7Z files, choose `stackoverflow.com-Posts.7z` , `stackoverflow.com-Users.7z` and `stackoverflow.com-Badges.7z`
 5. Unzip Stack Overflow data set to a directory. You'll need around 90GB of available space! 
@@ -40,7 +40,7 @@ Explore the Stack Overflow data set with the Elastic Stack using this gentle int
 
 ## Indexing data
 
-1. Navigate to `StackOverflow.Indexer/bin/Release/netcoreapp2.2` directory from the root of the solution. There should be a compiled `StackOverflow.Indexer.dll` file in the directory from compiling the solution in previous steps.
+1. Navigate to `StackOverflow.Indexer/bin/Release/netcoreapp3.0` directory from the root of the solution. There should be a compiled `StackOverflow.Indexer.dll` file in the directory from compiling the solution in previous steps.
 
 2. Check available options for indexing posts or users using `--help` argument
 
@@ -73,7 +73,7 @@ Explore the Stack Overflow data set with the Elastic Stack using this gentle int
 5. (Optional) Update answers with tags
 
     If you'd like to be able to filter both questions and answers using tags, it can be useful to denormalize question tags onto
-    answers. The source data can be transformed before ingesting to do this, but can also be achieved using the update by query API
+    answers. The source data _can_ be transformed before ingesting to do this, but can also be achieved using the update by query API, which is what this command does.
 
     ```
     dotnet .\StackOverflow.Indexer.dll tags -e "http://localhost:9200" -f "/path/to/Posts.xml"
@@ -82,6 +82,22 @@ Explore the Stack Overflow data set with the Elastic Stack using this gentle int
     This can take a few hours. The `-s` argument can be used to change the number of concurrent updates, so depending on the performance of
     the cluster into which you're indexing, you may be able to increase this to speed up the process. 
 
+## Import Kibana Saved Objects
+
+The [`kibana_saved_objects_742.ndjson`](/kibana/kibana_saved_objects_742.ndjson) file can be
+imported into Kibana to apply some preconfigured saved queries, visualizations and a dashboard:
+
+![Kibana Dashboard](images/kibana_dashboard.png)
+
+1. Navigate to `Management` menu item within Kibana
+2. Under Kibana, select `Saved Objects`
+3. Select `Import` and choose the `kibana_saved_objects_742.ndjson` file.
+
+There should now be 
+
+- a Dashboard under the `Dashboard` menu item
+- a collection of Vizualizations under `Vizualize` menu item
+- a collection of Saved Queries under `Discover` menu item
 
 ## License
 

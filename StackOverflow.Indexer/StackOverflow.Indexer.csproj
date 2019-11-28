@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
         <Company />
         <AssemblyVersion>1.0.0</AssemblyVersion>
         <FileVersion>1.0.0</FileVersion>
@@ -11,7 +11,7 @@
 
     <ItemGroup>
       <PackageReference Include="CommandLineParser" Version="2.6.0" />
-      <PackageReference Include="NEST" Version="7.3.0" />
+      <PackageReference Include="NEST" Version="7.4.1" />
     </ItemGroup>
 
 </Project>
